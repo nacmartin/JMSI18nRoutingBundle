@@ -241,6 +241,11 @@ class I18nRouter extends Router
         } else if (isset($params['_locale']) && 0 < $pos = strpos($params['_route'], I18nLoader::ROUTING_PREFIX)) {
             $params['_route'] = substr($params['_route'], $pos + strlen(I18nLoader::ROUTING_PREFIX));
         }
+        
+        // if route is excluded, simply pass
+        if (!preg_match('/__RG__/', $params['_route'])) {
+            return $params;
+        }
 
         // check if the matched route belongs to a different locale on another host
         if (isset($params['_locale'])
