@@ -100,7 +100,7 @@ class I18nRouter extends Router
     public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
     {
         // Always force absolute
-        $referenceType = self::ABSOLUTE_PATH;
+        $referenceType = self::ABSOLUTE_URL;
 
         // determine the most suitable locale to use for route generation
         $currentLocale = $this->context->getParameter('_locale');
